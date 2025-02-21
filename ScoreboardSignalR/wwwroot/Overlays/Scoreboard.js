@@ -38,15 +38,15 @@ connection.on("ReceiveScoreboardUpdate", (input) => {
                         const combinedLength = value.length + prefixElement.innerText.length;
                         if (combinedLength > 15) {
                             if (nextMatch){
-                                prefixElement.style.fontSize = element.style.fontSize = "48px";
+                                prefixElement.style.fontSize = element.style.fontSize = "44px";
                             }else{
-                                prefixElement.style.fontSize = element.style.fontSize = "22px"; 
+                                prefixElement.style.fontSize = element.style.fontSize = "26px"; 
                             }
                         } else {
                             if (nextMatch){
-                                prefixElement.style.fontSize = element.style.fontSize = "54px";
+                                prefixElement.style.fontSize = element.style.fontSize = "50px";
                             }else{
-                                prefixElement.style.fontSize = element.style.fontSize = "26px";
+                                prefixElement.style.fontSize = element.style.fontSize = "30px";
                             }
                         }
                     }

@@ -11,7 +11,7 @@ body {
 
 .header {
     height: 94px;
-    width: 1500px;
+    width: 1700px;
 
     box-sizing: border-box;
     background: none; /* Start with no background */
@@ -30,7 +30,7 @@ body {
 
 @keyframes loadBackground {
     to {
-        background: url("../Images/Header/HeaderFirst.png") no-repeat top;
+        background: url("../Images/Header/HeaderFirstalt.png") no-repeat top;
     }
 }
 
@@ -55,7 +55,7 @@ header > * {
 .player {
     font-weight: 600;
     font-family: "Roboto", sans-serif;
-    font-size: 26px;
+    font-size: 30px;
 }
 
 .round {
@@ -86,13 +86,15 @@ header > * {
 /*positions*/
 
 #scoreOne {
-    left: 415px;
-    max-width: 34px;
+    left: 505px;
+    max-height: 40px;
+    max-width: 44px;
 }
 
 #scoreTwo {
-    right: 415px;
-    max-width: 34px;
+    right: 505px;
+    max-height: 40px;
+    max-width: 44px;
 }
 
 #countryOne {
