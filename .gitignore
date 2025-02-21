@@ -1,0 +1,41 @@
+# JetBrains Rider IDE
+/.idea/
+*.iml
+/workspace.xml
+/misc.xml
+/*.log
+
+# Rider-specific files
+.idea/
+
+# C# build artifacts
+bin/
+obj/
+
+# User-specific files
+*.suo
+*.user
+*.userprefs
+*.vscode
+
+# NuGet packages
+packages/
+
+# Roslyn cache directories
+*.ide/
+
+# Resharper
+_ReSharper*/
+
+# Rider backups
+*.bak
+
+# DotCover coverage results
+*.dotCover
+
+# JetBrains tools
+/jetbrains/
+/resharper/
+
+# Rider's RiderLink settings
+/.rider/

@@ -1,0 +1,27 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Singles</title>
+    <link rel="stylesheet" href="./Scoreboard.css">
+</head>
+<body>
+<div id="scoreboard" class="scoreboard">
+    <header class="header">
+        <img class="player-score" id="scoreOne" src="../Images/Scores/" alt="">
+        <div class="player" id="playerOne">
+            <span class="clan-prefix" id="clanPrefixOne"></span>
+            <span class="player-name" id="nameOne"></span>
+        </div>
+        <div class="round" id="currentRound"></div>
+        <div class="player" id="playerTwo">
+            <span class="clan-prefix" id="clanPrefixTwo"></span>
+            <span class="player-name" id="nameTwo"></span>
+        </div>
+        <img class="player-score" id="scoreTwo" src="../Images/Scores/" alt="">
+    </header>
+</div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/microsoft-signalr/7.0.5/signalr.min.js"></script>
+<script src="./Scoreboard.js"></script>
+</body>
+</html>

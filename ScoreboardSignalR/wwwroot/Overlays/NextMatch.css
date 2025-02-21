@@ -1,0 +1,132 @@
+body {
+    margin: 0;
+    min-height: 100vh;
+}
+
+.scoreboard {
+    height: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+.header {
+    height: 165px;
+    width: 1400px;
+
+    box-sizing: border-box;
+    background: url("../Images/Header/VS1_optimized.png") no-repeat top;
+    font-weight: bold;
+
+    text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.7);
+    text-transform: uppercase;
+    text-align: center;
+    position: relative;
+
+    opacity: 0; /* Start hidden */
+    transition: opacity 1s ease-in-out; /* Smooth fade-in */
+
+    animation: fadeIn 1s 500ms forwards; /* Apply fade-in after 500ms */
+}
+
+@keyframes fadeIn {
+    to {
+        opacity: 1;
+    }
+}
+
+header > * {
+    position: absolute;
+    top: 44%;
+    transform: translateY(-50%);
+}
+
+.player-score {
+    width: 75px;
+    font-size: 36px;
+    color: #fff;
+}
+
+.player {
+    font-weight: 600;
+    font-family: "Roboto", sans-serif;
+    font-size: 26px;
+}
+
+.round {
+    color: #fff;
+    font-family: "Roboto", sans-serif;
+    top: 20px;
+}
+
+.clan-prefix,
+.upcoming-clan-prefix{
+    color: #ff0000;
+}
+
+.character-img {
+    max-width: 28px;
+    max-height: 28px;
+    object-fit: cover;
+}
+
+.player {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 5px;
+    color: white;
+}
+
+/*positions*/
+
+#scoreOne {
+    left: 415px;
+    max-width: 34px;
+}
+
+#scoreTwo {
+    right: 415px;
+    max-width: 34px;
+}
+
+#countryOne {
+    left: 55px;
+}
+
+#countryTwo {
+    right: 55px;
+}
+
+/*score position (50px) + score width (75px)*/
+#playerOne {
+    left: 125px;
+}
+
+#playerTwo {
+    right: 125px;
+}
+
+#upcomingCharacterOne{
+    left: 0;
+    top: 0;
+    transform: scale(1, 1);
+    max-height: 142px;
+}
+
+#upcomingCharacterTwo{
+    right: 0;
+    top: 0;
+    transform: scale(1, 1);
+    max-height: 142px;
+}
+
+/*position in center*/
+#upcomingRound {
+    left: 50%;
+    transform: translate(-50%,-50%);
+}
+
+/*divide parent element size without scores to 3 equal parts*/
+.player, #upcomingRound {
+    width: calc((100% - 340px) / 2);
+}
