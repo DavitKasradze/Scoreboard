@@ -8,6 +8,6 @@ How to use it with OBS
 
 2.after launching obs add new custom browser dock and pass in: http://localhost:5000/Panel/ControlPanel.html
 
-3.add browser sources to your scenes with links: http://localhost:5000/Overlays/ {HTML Link Here}
+3.add browser sources to your scenes with links: http://localhost:5000/Overlays/ {HTML Name Here}
 
 Enjoy!
