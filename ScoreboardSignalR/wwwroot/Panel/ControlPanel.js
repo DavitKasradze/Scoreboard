@@ -88,4 +88,8 @@ document.getElementById("clearTwo").addEventListener("click", () => {
     document.getElementById("scoreTwo").value = 0;
 });
 
+document.getElementById("Toggle").addEventListener("click", () => {
+    connection.invoke("ToggleCharacterRender")
+});
+
 connection.start().catch(err => console.error(err));

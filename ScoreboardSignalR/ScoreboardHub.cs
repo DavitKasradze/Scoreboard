@@ -45,4 +45,9 @@ public class ScoreboardHub : Hub
         
         File.WriteAllText(_filePath, jsonData);
     }
+    
+    public async Task ToggleCharacterRender()
+    {
+        await Clients.All.SendAsync("ToggleCharacterRender");
+    }
 }

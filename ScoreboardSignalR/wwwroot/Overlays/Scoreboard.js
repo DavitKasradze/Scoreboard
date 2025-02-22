@@ -101,11 +101,15 @@ connection.on("ReceiveScoreboardUpdate", (input) => {
     updateElement("upcomingPrefixOne", input.upcomingPrefixOne, "upcomingNameOne", true);
     updateElement("upcomingCountryOne", input.upcomingCountryOne);
     updateImage("upcomingCharacterOne", input.upcomingCharacterOne);
+    updateImage("playerRenderOne", input.upcomingCharacterOne);
+    updateImage("characterPanelOne", input.upcomingCharacterOne);
     
     updateElement("upcomingNameTwo", input.upcomingNameTwo);
     updateElement("upcomingPrefixTwo", input.upcomingPrefixTwo, "upcomingNameTwo", true);
     updateElement("upcomingCountryTwo", input.upcomingCountryTwo);
     updateImage("upcomingCharacterTwo", input.upcomingCharacterTwo);
+    updateImage("playerRenderTwo", input.upcomingCharacterTwo);
+    updateImage("characterPanelTwo", input.upcomingCharacterTwo);
 
     updateElement("upcomingRound", input.upcomingRound);
 });
@@ -114,3 +118,56 @@ connection.on("ReceiveScoreboardUpdate", (input) => {
 setTimeout(() => {
     isFirstLoad = false;
 }, 2500);
+
+connection.on("ToggleCharacterRender", (input) => {
+    const playerOne = document.getElementById('playerRenderOne');
+    const PlayerPanelOne = document.getElementById('characterPanelOne');
+    const playerTwo = document.getElementById('playerRenderTwo');
+    const PlayerPanelTwo = document.getElementById('characterPanelTwo');
+
+    // Apply fade effect to hide an element
+    const fadeOut = (element) => {
+        element.style.transition = "opacity 0.5s";
+        element.style.opacity = "0"; // Start fade out
+
+        // Hide the element after the fade-out effect
+        setTimeout(() => {
+            element.style.display = "none";
+        }, 500); // Match the fade-out duration
+    };
+
+    // Apply fade effect to show an element
+    const fadeIn = (element) => {
+        element.style.display = "block"; // Ensure element is in the layout
+        element.style.opacity = "0"; // Start from invisible
+
+        setTimeout(() => {
+            element.style.transition = "opacity 0.5s";
+            element.style.opacity = "1"; // Fade in after ensuring display is set
+        }, 50); // Small delay ensures transition applies correctly
+    };
+
+    if (playerOne.style.display !== "none") {
+        // Fade out Player 1 and upcoming Player 1
+        fadeOut(playerOne);
+        fadeOut(PlayerPanelOne);
+
+        // After fade out, fade in Player 2 and upcoming Player 2
+        setTimeout(() => {
+            fadeIn(playerTwo);
+            fadeIn(PlayerPanelTwo);
+        }, 500); // Wait for fade-out to complete
+    } else {
+        // Fade out Player 2 and upcoming Player 2
+        fadeOut(playerTwo);
+        fadeOut(PlayerPanelTwo);
+
+        // After fade out, fade in Player 1 and upcoming Player 1
+        setTimeout(() => {
+            fadeIn(playerOne);
+            fadeIn(PlayerPanelOne);
+        }, 500); // Wait for fade-out to complete
+    }
+});
+
+

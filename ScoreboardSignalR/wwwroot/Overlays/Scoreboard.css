@@ -86,13 +86,13 @@ header > * {
 /*positions*/
 
 #scoreOne {
-    left: 505px;
+    left: 512px;
     max-height: 40px;
     max-width: 44px;
 }
 
 #scoreTwo {
-    right: 505px;
+    right: 512px;
     max-height: 40px;
     max-width: 44px;
 }
