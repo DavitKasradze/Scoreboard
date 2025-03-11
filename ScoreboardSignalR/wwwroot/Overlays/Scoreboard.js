@@ -38,13 +38,13 @@ connection.on("ReceiveScoreboardUpdate", (input) => {
                         const combinedLength = value.length + prefixElement.innerText.length;
                         if (combinedLength > 15) {
                             if (nextMatch){
-                                prefixElement.style.fontSize = element.style.fontSize = "44px";
+                                prefixElement.style.fontSize = element.style.fontSize = "58px";
                             }else{
                                 prefixElement.style.fontSize = element.style.fontSize = "26px"; 
                             }
                         } else {
                             if (nextMatch){
-                                prefixElement.style.fontSize = element.style.fontSize = "50px";
+                                prefixElement.style.fontSize = element.style.fontSize = "64px";
                             }else{
                                 prefixElement.style.fontSize = element.style.fontSize = "30px";
                             }

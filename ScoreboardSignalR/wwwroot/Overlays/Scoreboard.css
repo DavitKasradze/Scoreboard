@@ -42,7 +42,7 @@ body {
 
 header > * {
     position: absolute;
-    top: 44%;
+    top: 43%;
     transform: translateY(-50%);
 }
 
