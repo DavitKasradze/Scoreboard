@@ -1,201 +1,186 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Control Panel</title>
     <link rel="stylesheet" href="./ControlPanel.css">
 </head>
+
 <body>
-<div class="control-panel">
-    <div class="container">
-        <div class="section">
-            <label for="clanPrefixOne"></label><input type="text" id="clanPrefixOne" placeholder="Clan">
-            <label for="nameOne"></label><input type="text" id="nameOne" placeholder="Player One Name">
-            <label for="countryOne"></label>
-            <select name="countryOne" id="countryOne" placeholder="Country">
-                <option value="Unknown">Country</option>
-                <option value="Italy">Italy</option>
-                <option value="Germany">Germany</option>
-                <option value="Spain">Spain</option>
-                <option value="France">France</option>
-            </select>
-            <label for="scoreOne"></label><input type="number" id="scoreOne" placeholder="Score" value="0">
-            <div class="score-buttons">
-                <div class="button-row">
-                    <button id="clearOne" class="score-btn">Clear</button>
-                </div>
-            </div>
+    <div class="control-panel">
 
-        </div>
-    </div>
-
-    <div class="container">
-        <div class="section">
-            <label for="clanPrefixTwo"></label><input type="text" id="clanPrefixTwo" placeholder="Clan">
-            <label for="nameTwo"></label><input type="text" id="nameTwo" placeholder="Player Two Name">
-            <label for="countryTwo"></label>
-            <select name="countryTwo" id="countryTwo" placeholder="Country">
-                <option value="Unknown">Country</option>
-                <option value="Italy">Italy</option>
-                <option value="Germany">Germany</option>
-                <option value="Spain">Spain</option>
-                <option value="France">France</option>
-            </select>
-            <label for="scoreTwo"></label><input type="number" id="scoreTwo" placeholder="Score" value="0">
-            <div class="score-buttons">
-                <div class="button-row">
-                    <button id="clearTwo" class="score-btn">Clear</button>
-                </div>
+        <!-- Player 1 -->
+        <div class="card">
+            <h4 class="card-title">Player 1</h4>
+            <div class="row">
+                <input type="text" id="clanPrefixOne" placeholder="Clan" class="input-small">
+                <input type="text" id="nameOne" placeholder="Name" class="flex-2">
+                <select name="countryOne" id="countryOne" class="flex-1">
+                    <option value="Unknown">Country</option>
+                    <option value="Italy">Italy</option>
+                    <option value="Germany">Germany</option>
+                    <option value="Spain">Spain</option>
+                    <option value="France">France</option>
+                </select>
+                <input type="number" id="scoreOne" placeholder="0" value="0" class="input-score">
+                <button id="clearOne" class="btn btn-sm">Clear</button>
             </div>
         </div>
-    </div>
 
-    <div class="container">
-        <div class="score-buttons">
-            <div class="button-row">
-                <button id="newSet" class="score-btn">New Set</button>
-                <button id="scoreReset" class="score-btn">0-0</button>
-                <button id="swap" class="score-btn">Swap</button>
+        <!-- Player 2 -->
+        <div class="card">
+            <h4 class="card-title">Player 2</h4>
+            <div class="row">
+                <input type="text" id="clanPrefixTwo" placeholder="Clan" class="input-small">
+                <input type="text" id="nameTwo" placeholder="Name" class="flex-2">
+                <select name="countryTwo" id="countryTwo" class="flex-1">
+                    <option value="Unknown">Country</option>
+                    <option value="Italy">Italy</option>
+                    <option value="Germany">Germany</option>
+                    <option value="Spain">Spain</option>
+                    <option value="France">France</option>
+                </select>
+                <input type="number" id="scoreTwo" placeholder="0" value="0" class="input-score">
+                <button id="clearTwo" class="btn btn-sm">Clear</button>
             </div>
         </div>
-    </div>
 
-
-    <div class="container">
-            <div class="section">
-                <label for="prizePool"></label><input type="text" id="prizePool" placeholder="Prize Pool">
-                <label for="currentRound"></label><input type="text" id="currentRound" placeholder="Current Round">
-            </div>
-    </div>
-    
-    <div class="round-section">
-        <h4>NEXT MATCH</h4>
-        <label for="upcomingRound"></label>
-        <input type="text" id="upcomingRound" placeholder="Upcoming Round">
-    </div>
-    
-        <div class="player-section">
-            <label for="upcomingPrefixOne"></label>
-            <input type="text" id="upcomingPrefixOne" placeholder="Clan">
-            <label for="upcomingNameOne"></label>
-            <input type="text" id="upcomingNameOne" placeholder="Upcoming Player One">
-            <label for="upcomingCountryOne"></label>
-            <select name="upcomingCountryOne" id="upcomingCountryOne">
-                <option value="">Country</option>
-                <option value="Italy">Italy</option>
-                <option value="Germany">Germany</option>
-                <option value="Spain">Spain</option>
-                <option value="France">France</option>
-            </select>
-            <label for="upcomingCharacterOne"></label>
-            <select name="upcomingCharacterOne" id="upcomingCharacterOne" placeholder="Character">
-                <option value="Unknown_Alt">Unknown</option>
-                <option value="Alisa">Alisa</option>
-                <option value="Asuka">Asuka</option>
-                <option value="Azucena">Azucena</option>
-                <option value="Bryan">Bryan</option>
-                <option value="Claudio">Claudio</option>
-                <option value="Clive">Clive</option>
-                <option value="DevilJin">DevilJin</option>
-                <option value="Dragunov">Dragunov</option>
-                <option value="Eddy">Eddy</option>
-                <option value="Feng">Feng</option>
-                <option value="Heihachi">Heihachi</option>
-                <option value="Hwoarang">Hwoarang</option>
-                <option value="Jack8">Jack8</option>
-                <option value="Jin">Jin</option>
-                <option value="Jun">Jun</option>
-                <option value="Kazuya">Kazuya</option>
-                <option value="King">King</option>
-                <option value="Kuma">Kuma</option>
-                <option value="Lars">Lars</option>
-                <option value="Law">Law</option>
-                <option value="Lee">Lee</option>
-                <option value="Leo">Leo</option>
-                <option value="Leroy">Leroy</option>
-                <option value="Lidia">Lidia</option>
-                <option value="Lili">Lili</option>
-                <option value="Nina">Nina</option>
-                <option value="Panda">Panda</option>
-                <option value="Paul">Paul</option>
-                <option value="Raven">Raven</option>
-                <option value="Reina">Reina</option>
-                <option value="Shaheen">Shaheen</option>
-                <option value="Steve">Steve</option>
-                <option value="Victor">Victor</option>
-                <option value="Xiaoyu">Xiaoyu</option>
-                <option value="Yoshimitsu">Yoshimitsu</option>
-                <option value="Zafina">Zafina</option>
-            </select>
+        <!-- Match Actions -->
+        <div class="row">
+            <button id="newSet" class="btn flex-1">New Set</button>
+            <button id="scoreReset" class="btn flex-1">0 - 0</button>
+            <button id="swap" class="btn flex-1">Swap</button>
+            <button id="Toggle" class="btn flex-1" style="background-color: #8e44ad;">Toggle Scoreboard</button>
         </div>
 
-        <div class="player-section">
-            <label for="upcomingPrefixTwo"></label>
-            <input type="text" id="upcomingPrefixTwo" placeholder="Clan">
-            <label for="upcomingNameTwo"></label>
-            <input type="text" id="upcomingNameTwo" placeholder="Upcoming Player Two">
-            <label for="upcomingCountryTwo"></label>
-            <select name="upcomingCountryTwo" id="upcomingCountryTwo">
-                <option value="">Country</option>
-                <option value="Italy">Italy</option>
-                <option value="Germany">Germany</option>
-                <option value="Spain">Spain</option>
-                <option value="France">France</option>
-            </select>
-            <label for="upcomingCharacterTwo"></label>
-            <select name="upcomingCharacterTwo" id="upcomingCharacterTwo" placeholder="Character">
-                <option value="Unknown">Unknown</option>
-                <option value="Alisa">Alisa</option>
-                <option value="Asuka">Asuka</option>
-                <option value="Azucena">Azucena</option>
-                <option value="Bryan">Bryan</option>
-                <option value="Claudio">Claudio</option>
-                <option value="Clive">Clive</option>
-                <option value="DevilJin">DevilJin</option>
-                <option value="Dragunov">Dragunov</option>
-                <option value="Eddy">Eddy</option>
-                <option value="Feng">Feng</option>
-                <option value="Heihachi">Heihachi</option>
-                <option value="Hwoarang">Hwoarang</option>
-                <option value="Jack8">Jack8</option>
-                <option value="Jin">Jin</option>
-                <option value="Jun">Jun</option>
-                <option value="Kazuya">Kazuya</option>
-                <option value="King">King</option>
-                <option value="Kuma">Kuma</option>
-                <option value="Lars">Lars</option>
-                <option value="Law">Law</option>
-                <option value="Lee">Lee</option>
-                <option value="Leo">Leo</option>
-                <option value="Leroy">Leroy</option>
-                <option value="Lidia">Lidia</option>
-                <option value="Lili">Lili</option>
-                <option value="Nina">Nina</option>
-                <option value="Panda">Panda</option>
-                <option value="Paul">Paul</option>
-                <option value="Raven">Raven</option>
-                <option value="Reina">Reina</option>
-                <option value="Shaheen">Shaheen</option>
-                <option value="Steve">Steve</option>
-                <option value="Victor">Victor</option>
-                <option value="Xiaoyu">Xiaoyu</option>
-                <option value="Yoshimitsu">Yoshimitsu</option>
-                <option value="Zafina">Zafina</option>
-            </select>
-        </div>
-
-    <div class="container">
-        <div class="score-buttons">
-            <div class="button-row">
-                <button id="Toggle" class="score-btn">Toggle</button>
+        <!-- Match Info -->
+        <div class="card">
+            <h4 class="card-title">Match Info</h4>
+            <div class="row">
+                <input type="text" id="prizePool" placeholder="Prize Pool" class="flex-1">
+                <input type="text" id="currentRound" placeholder="Current Round" class="flex-1">
             </div>
         </div>
+
+        <!-- Next Match -->
+        <div class="card">
+            <h4 class="card-title">Next Match</h4>
+            <div class="row" style="margin-bottom: 4px;">
+                <input type="text" id="upcomingRound" placeholder="Upcoming Round" class="flex-1">
+            </div>
+
+            <!-- Next Match P1 -->
+            <div class="row" style="margin-bottom: 4px;">
+                <input type="text" id="upcomingPrefixOne" placeholder="Clan" class="input-small">
+                <input type="text" id="upcomingNameOne" placeholder="P1 Name" class="flex-2">
+                <select name="upcomingCountryOne" id="upcomingCountryOne" class="flex-1">
+                    <option value="">Country</option>
+                    <option value="Italy">Italy</option>
+                    <option value="Germany">Germany</option>
+                    <option value="Spain">Spain</option>
+                    <option value="France">France</option>
+                </select>
+                <select name="upcomingCharacterOne" id="upcomingCharacterOne" class="flex-1">
+                    <option value="Unknown_Alt">Character</option>
+                    <option value="Alisa">Alisa</option>
+                    <option value="Asuka">Asuka</option>
+                    <option value="Azucena">Azucena</option>
+                    <option value="Bryan">Bryan</option>
+                    <option value="Claudio">Claudio</option>
+                    <option value="Clive">Clive</option>
+                    <option value="DevilJin">DevilJin</option>
+                    <option value="Dragunov">Dragunov</option>
+                    <option value="Eddy">Eddy</option>
+                    <option value="Feng">Feng</option>
+                    <option value="Heihachi">Heihachi</option>
+                    <option value="Hwoarang">Hwoarang</option>
+                    <option value="Jack8">Jack8</option>
+                    <option value="Jin">Jin</option>
+                    <option value="Jun">Jun</option>
+                    <option value="Kazuya">Kazuya</option>
+                    <option value="King">King</option>
+                    <option value="Kuma">Kuma</option>
+                    <option value="Lars">Lars</option>
+                    <option value="Law">Law</option>
+                    <option value="Lee">Lee</option>
+                    <option value="Leo">Leo</option>
+                    <option value="Leroy">Leroy</option>
+                    <option value="Lidia">Lidia</option>
+                    <option value="Lili">Lili</option>
+                    <option value="Nina">Nina</option>
+                    <option value="Panda">Panda</option>
+                    <option value="Paul">Paul</option>
+                    <option value="Raven">Raven</option>
+                    <option value="Reina">Reina</option>
+                    <option value="Shaheen">Shaheen</option>
+                    <option value="Steve">Steve</option>
+                    <option value="Victor">Victor</option>
+                    <option value="Xiaoyu">Xiaoyu</option>
+                    <option value="Yoshimitsu">Yoshimitsu</option>
+                    <option value="Zafina">Zafina</option>
+                </select>
+            </div>
+
+            <!-- Next Match P2 -->
+            <div class="row" style="margin-bottom: 4px;">
+                <input type="text" id="upcomingPrefixTwo" placeholder="Clan" class="input-small">
+                <input type="text" id="upcomingNameTwo" placeholder="P2 Name" class="flex-2">
+                <select name="upcomingCountryTwo" id="upcomingCountryTwo" class="flex-1">
+                    <option value="">Country</option>
+                    <option value="Italy">Italy</option>
+                    <option value="Germany">Germany</option>
+                    <option value="Spain">Spain</option>
+                    <option value="France">France</option>
+                </select>
+                <select name="upcomingCharacterTwo" id="upcomingCharacterTwo" class="flex-1">
+                    <option value="Unknown">Character</option>
+                    <option value="Alisa">Alisa</option>
+                    <option value="Asuka">Asuka</option>
+                    <option value="Azucena">Azucena</option>
+                    <option value="Bryan">Bryan</option>
+                    <option value="Claudio">Claudio</option>
+                    <option value="Clive">Clive</option>
+                    <option value="DevilJin">DevilJin</option>
+                    <option value="Dragunov">Dragunov</option>
+                    <option value="Eddy">Eddy</option>
+                    <option value="Feng">Feng</option>
+                    <option value="Heihachi">Heihachi</option>
+                    <option value="Hwoarang">Hwoarang</option>
+                    <option value="Jack8">Jack8</option>
+                    <option value="Jin">Jin</option>
+                    <option value="Jun">Jun</option>
+                    <option value="Kazuya">Kazuya</option>
+                    <option value="King">King</option>
+                    <option value="Kuma">Kuma</option>
+                    <option value="Lars">Lars</option>
+                    <option value="Law">Law</option>
+                    <option value="Lee">Lee</option>
+                    <option value="Leo">Leo</option>
+                    <option value="Leroy">Leroy</option>
+                    <option value="Lidia">Lidia</option>
+                    <option value="Lili">Lili</option>
+                    <option value="Nina">Nina</option>
+                    <option value="Panda">Panda</option>
+                    <option value="Paul">Paul</option>
+                    <option value="Raven">Raven</option>
+                    <option value="Reina">Reina</option>
+                    <option value="Shaheen">Shaheen</option>
+                    <option value="Steve">Steve</option>
+                    <option value="Victor">Victor</option>
+                    <option value="Xiaoyu">Xiaoyu</option>
+                    <option value="Yoshimitsu">Yoshimitsu</option>
+                    <option value="Zafina">Zafina</option>
+                </select>
+            </div>
+        </div>
+
+        <button id="updateScoreboard" class="btn btn-danger btn-block">UPDATE SCOREBOARD</button>
+
     </div>
-    
-    <button id="updateScoreboard">Update Scoreboard</button>
-</div>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/microsoft-signalr/7.0.5/signalr.min.js"></script>
-<script src="./ControlPanel.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/microsoft-signalr/7.0.5/signalr.min.js"></script>
+    <script src="./ControlPanel.js"></script>
 </body>
+
 </html>
