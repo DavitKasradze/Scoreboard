@@ -17,7 +17,7 @@ connection.start().then(() => {
 });
 
 connection.on("ReceiveScoreboardUpdate", (input) => {
-    function updateElement(id, value,prefixId = null, nextMatch = false ,) {
+    function updateElement(id, value, prefixId = null, nextMatch = false,) {
         let element = document.getElementById(id);
         if (element) {
             let delay = isFirstLoad ? isFirstLoadDelay : 1500; // 3.7s on load, 0.5s after
@@ -36,22 +36,46 @@ connection.on("ReceiveScoreboardUpdate", (input) => {
                     const prefixElement = document.getElementById(prefixId);
                     if (prefixElement) {
                         const combinedLength = value.length + prefixElement.innerText.length;
-                        if (combinedLength > 15) {
-                            if (nextMatch){
-                                prefixElement.style.fontSize = element.style.fontSize = "58px";
-                            }else{
-                                prefixElement.style.fontSize = element.style.fontSize = "26px"; 
-                            }
+                        let size, nextSize;
+                        if (combinedLength > 26) {
+                            size = "17px"; nextSize = "38px";
+                        } else if (combinedLength > 20) {
+                            size = "20px"; nextSize = "46px";
+                        } else if (combinedLength > 15) {
+                            size = "25px"; nextSize = "56px";
                         } else {
-                            if (nextMatch){
-                                prefixElement.style.fontSize = element.style.fontSize = "64px";
-                            }else{
-                                prefixElement.style.fontSize = element.style.fontSize = "30px";
-                            }
+                            size = "30px"; nextSize = "64px";
                         }
+                        prefixElement.style.fontSize = element.style.fontSize = nextMatch ? nextSize : size;
                     }
                 } else {
-                    element.style.fontSize = value.length > 16 ? "22px" : "26px";
+                    let len = value.length;
+                    let size;
+
+                    if (id === "currentRound" || id === "prizePool" || id === "upcomingRound") {
+                        // Base size used to be 26px, scale down progressively
+                        if (len > 26) {
+                            size = "15px";
+                        } else if (len > 20) {
+                            size = "18px";
+                        } else if (len > 15) {
+                            size = "22px";
+                        } else {
+                            size = "26px";
+                        }
+                    } else {
+                        // Fallback logic for standalone names (without clans)
+                        if (len > 26) {
+                            size = "17px";
+                        } else if (len > 20) {
+                            size = "20px";
+                        } else if (len > 15) {
+                            size = "25px";
+                        } else {
+                            size = "30px";
+                        }
+                    }
+                    element.style.fontSize = size;
                 }
 
                 element.style.opacity = "1"; // Fade in
@@ -103,7 +127,7 @@ connection.on("ReceiveScoreboardUpdate", (input) => {
     updateImage("upcomingCharacterOne", input.upcomingCharacterOne);
     updateImage("playerRenderOne", input.upcomingCharacterOne);
     updateImage("characterPanelOne", input.upcomingCharacterOne);
-    
+
     updateElement("upcomingNameTwo", input.upcomingNameTwo);
     updateElement("upcomingPrefixTwo", input.upcomingPrefixTwo, "upcomingNameTwo", true);
     updateElement("upcomingCountryTwo", input.upcomingCountryTwo);
