@@ -64,8 +64,42 @@ header > * {
     top: 20px;
 }
 
+.prize-pool {
+    position: fixed;
+    right: 40px;
+    bottom: 40px;
+    width: max-content;
+    background: linear-gradient(135deg, rgba(0, 0, 0, 0.85) 0%, rgba(15, 15, 15, 0.95) 100%);
+    color: #fff;
+    font-family: "Roboto", sans-serif;
+    font-weight: 700;
+    padding: 10px 18px;
+    border-radius: 6px;
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5);
+    font-size: 20px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    z-index: 1000;
+    text-align: center;
+}
+
+.prize-pool::before {
+    content: "PRIZE POOL";
+    display: block;
+    font-size: 11px;
+    color: #aaa;
+    font-weight: 500;
+    letter-spacing: 1.5px;
+    margin-bottom: 4px;
+}
+
+.prize-pool:empty {
+    display: none !important;
+}
+
 .clan-prefix,
-.upcoming-clan-prefix{
+.upcoming-clan-prefix {
     color: red;
 }
 
@@ -124,3 +158,165 @@ header > * {
 .player, #currentRound {
     width: calc((100% - 730px) / 3);
 }
+
+/* ── Prediction Overlay (black / red / white theme) ─────────────── */
+.prediction-container {
+    position: fixed;
+    bottom: 30px;
+    left: 50%;
+    transform: translateX(-50%) translateY(0);
+    width: 1150px;
+    background: rgba(0, 0, 0, 0.95);
+    border: 2px solid rgba(255, 255, 255, 0.15);
+    border-top: 4px solid #cc0000;
+    border-radius: 10px;
+    box-shadow: 0 -4px 50px rgba(0, 0, 0, 0.9), 0 0 35px rgba(180, 0, 0, 0.35);
+    overflow: hidden;
+    font-family: "Roboto", sans-serif;
+    z-index: 999;
+    opacity: 1;
+    transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+.prediction-container.hidden {
+    opacity: 0;
+    pointer-events: none;
+    transform: translateX(-50%) translateY(30px);
+}
+
+.prediction-header-bar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 24px;
+    background: linear-gradient(90deg, rgba(160, 0, 0, 0.45) 0%, rgba(10, 10, 10, 0.9) 50%, rgba(160, 0, 0, 0.45) 100%);
+    border-bottom: 1px solid rgba(200, 0, 0, 0.4);
+}
+
+.prediction-tag {
+    font-size: 16px;
+    font-weight: 800;
+    color: #cc0000;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    transition: color 0.3s;
+}
+
+.prediction-title {
+    font-size: 18px;
+    font-weight: 700;
+    color: #ffffff;
+    letter-spacing: 0.8px;
+    text-transform: uppercase;
+    text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.9);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 750px;
+}
+
+/* Labels row — always full width, never clipped */
+.prediction-labels-row {
+    display: flex;
+    width: 100%;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.pred-label {
+    display: flex;
+    align-items: center;
+    width: 50%;
+    padding: 14px 22px;
+    gap: 12px;
+    box-sizing: border-box;
+}
+
+.pred-label-one {
+    background: #111111;
+    justify-content: flex-start;
+    border-left: 5px solid #cc0000;
+    border-right: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.pred-label-two {
+    background: linear-gradient(90deg, #6b0000 0%, #990000 100%);
+    justify-content: flex-end;
+}
+
+/* Visual bar row — purely cosmetic, widths change with odds */
+.prediction-bar-wrapper {
+    display: flex;
+    height: 16px;
+    width: 100%;
+    background: #000;
+    position: relative;
+}
+
+.prediction-side {
+    height: 100%;
+    box-sizing: border-box;
+    transition: width 0.7s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.side-one {
+    background: #1a1a1a;
+    border-left: 5px solid #cc0000;
+}
+
+.side-two {
+    background: linear-gradient(90deg, #8b0000 0%, #cc0000 100%);
+}
+
+/* Winner / Loser states — applied to label containers */
+.pred-label.side-winner {
+    box-shadow: inset 0 0 0 3px rgba(255, 255, 255, 0.95);
+    animation: winnerPulse 1.4s ease-in-out infinite;
+}
+
+.pred-label.side-winner .prediction-name {
+    color: #ffffff;
+    font-size: 24px;
+}
+
+.pred-label.side-winner .prediction-odds {
+    color: #ffffff;
+    font-size: 24px;
+}
+
+.pred-label.side-winner::after {
+    content: "🏆";
+    font-size: 26px;
+    margin-left: 10px;
+}
+
+.pred-label.side-loser {
+    opacity: 0.35;
+    filter: grayscale(70%);
+}
+
+@keyframes winnerPulse {
+    0%, 100% { box-shadow: inset 0 0 0 3px rgba(255, 255, 255, 0.95); }
+    50%       { box-shadow: inset 0 0 0 3px rgba(255, 255, 255, 0.3), 0 0 20px rgba(255, 255, 255, 0.2); }
+}
+
+.prediction-name {
+    font-size: 20px;
+    font-weight: 700;
+    color: #ffffff;
+    text-transform: uppercase;
+    letter-spacing: 0.8px;
+    text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.9);
+    transition: font-size 0.3s, color 0.3s;
+}
+
+.prediction-odds {
+    font-size: 20px;
+    font-weight: 800;
+    color: rgba(255, 255, 255, 0.8);
+    text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.9);
+    transition: color 0.3s, font-size 0.3s;
+}
+
+
+
+

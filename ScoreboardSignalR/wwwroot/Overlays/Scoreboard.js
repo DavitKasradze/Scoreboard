@@ -20,6 +20,12 @@ connection.on("ReceiveScoreboardUpdate", (input) => {
     function updateElement(id, value, prefixId = null, nextMatch = false,) {
         let element = document.getElementById(id);
         if (element) {
+            let stringValue = String(value != null ? value : "");
+            if (element.dataset.value === stringValue) {
+                return;
+            }
+            element.dataset.value = stringValue;
+
             let delay = isFirstLoad ? isFirstLoadDelay : 1500; // 3.7s on load, 0.5s after
 
             element.style.transition = "opacity 0.5s";
@@ -86,6 +92,12 @@ connection.on("ReceiveScoreboardUpdate", (input) => {
     function updateImage(id, value) {
         let element = document.getElementById(id);
         if (element) {
+            let stringValue = String(value != null ? value : "");
+            if (element.dataset.value === stringValue) {
+                return;
+            }
+            element.dataset.value = stringValue;
+
             let delay = isFirstLoad ? isFirstLoadDelay : 1500; // 3.7s on load, 0.5s after
 
             element.style.transition = "opacity 0.5s";
@@ -101,6 +113,54 @@ connection.on("ReceiveScoreboardUpdate", (input) => {
                 element.src = element.src + value + ".png";
                 element.style.opacity = '1';
             }, delay);
+        }
+    }
+
+    // Check coupling for Player 1 (force update both if either changes to keep size logic in sync)
+    let nameOne = document.getElementById("nameOne");
+    let clanOne = document.getElementById("clanPrefixOne");
+    if (nameOne && clanOne) {
+        let nameOneChanged = nameOne.dataset.value !== String(input.nameOne || "");
+        let clanOneChanged = clanOne.dataset.value !== String(input.clanPrefixOne || "");
+        if (nameOneChanged || clanOneChanged) {
+            nameOne.dataset.value = undefined;
+            clanOne.dataset.value = undefined;
+        }
+    }
+
+    // Check coupling for Player 2 (force update both if either changes to keep size logic in sync)
+    let nameTwo = document.getElementById("nameTwo");
+    let clanTwo = document.getElementById("clanPrefixTwo");
+    if (nameTwo && clanTwo) {
+        let nameTwoChanged = nameTwo.dataset.value !== String(input.nameTwo || "");
+        let clanTwoChanged = clanTwo.dataset.value !== String(input.clanPrefixTwo || "");
+        if (nameTwoChanged || clanTwoChanged) {
+            nameTwo.dataset.value = undefined;
+            clanTwo.dataset.value = undefined;
+        }
+    }
+
+    // Check coupling for Upcoming Player 1 (force update both if either changes to keep size logic in sync)
+    let upcomingNameOne = document.getElementById("upcomingNameOne");
+    let upcomingPrefixOne = document.getElementById("upcomingPrefixOne");
+    if (upcomingNameOne && upcomingPrefixOne) {
+        let upNameOneChanged = upcomingNameOne.dataset.value !== String(input.upcomingNameOne || "");
+        let upPrefixOneChanged = upcomingPrefixOne.dataset.value !== String(input.upcomingPrefixOne || "");
+        if (upNameOneChanged || upPrefixOneChanged) {
+            upcomingNameOne.dataset.value = undefined;
+            upcomingPrefixOne.dataset.value = undefined;
+        }
+    }
+
+    // Check coupling for Upcoming Player 2 (force update both if either changes to keep size logic in sync)
+    let upcomingNameTwo = document.getElementById("upcomingNameTwo");
+    let upcomingPrefixTwo = document.getElementById("upcomingPrefixTwo");
+    if (upcomingNameTwo && upcomingPrefixTwo) {
+        let upNameTwoChanged = upcomingNameTwo.dataset.value !== String(input.upcomingNameTwo || "");
+        let upPrefixTwoChanged = upcomingPrefixTwo.dataset.value !== String(input.upcomingPrefixTwo || "");
+        if (upNameTwoChanged || upPrefixTwoChanged) {
+            upcomingNameTwo.dataset.value = undefined;
+            upcomingPrefixTwo.dataset.value = undefined;
         }
     }
 
@@ -136,6 +196,97 @@ connection.on("ReceiveScoreboardUpdate", (input) => {
     updateImage("characterPanelTwo", input.upcomingCharacterTwo);
 
     updateElement("upcomingRound", input.upcomingRound);
+});
+
+// ── Prediction overlay renderer ──────────────────────────────────────
+// Called exclusively from ReceivePredictionUpdate so scoreboard updates
+// never accidentally overwrite the prediction overlay.
+function applyPredictionUpdate(pred) {
+    const predContainer = document.getElementById("predictionContainer");
+    if (!predContainer) return;
+
+    if (!pred.active) {
+        predContainer.classList.add("hidden");
+        return;
+    }
+
+    const isResolved = pred.status === "RESOLVED";
+    const isCanceled = pred.status === "CANCELED";
+    const winner     = pred.winner; // "ONE" | "TWO" | null
+
+    predContainer.classList.remove("hidden");
+
+    // Status badge
+    const statusEl = document.getElementById("predictionStatus");
+    if (statusEl) {
+        if (isResolved && winner) {
+            statusEl.innerText = "🏆 WINNER";
+            statusEl.style.color = "#ffe066";
+        } else if (isCanceled) {
+            statusEl.innerText = "CANCELED";
+            statusEl.style.color = "#e74c3c";
+        } else if (pred.status === "LOCKED") {
+            statusEl.innerText = "🔒 LOCKED";
+            statusEl.style.color = "#f39c12";
+        } else {
+            statusEl.innerText = "TWITCH PREDICTION";
+            statusEl.style.color = "#a970ff";
+        }
+    }
+
+    // Title
+    const titleEl = document.getElementById("predictionTitle");
+    if (titleEl) titleEl.innerText = (pred.title || "WHO WILL WIN?").toUpperCase();
+
+    // Names & odds
+    const nameOneEl = document.getElementById("predictionNameOne");
+    if (nameOneEl) nameOneEl.innerText = (pred.nameOne || "PLAYER 1").toUpperCase();
+
+    const nameTwoEl = document.getElementById("predictionNameTwo");
+    if (nameTwoEl) nameTwoEl.innerText = (pred.nameTwo || "PLAYER 2").toUpperCase();
+
+    const oddsOneEl = document.getElementById("predictionOddsOne");
+    if (oddsOneEl) oddsOneEl.innerText = pred.oddsOne || `${pred.pctOne ?? 50}%`;
+
+    const oddsTwoEl = document.getElementById("predictionOddsTwo");
+    if (oddsTwoEl) oddsTwoEl.innerText = pred.oddsTwo || `${pred.pctTwo ?? 50}%`;
+
+    // Bar widths (purely visual — no text inside)
+    const sideOne = document.getElementById("predictionSideOne");
+    const sideTwo = document.getElementById("predictionSideTwo");
+    const pct1 = pred.pctOne ?? 50;
+    const pct2 = pred.pctTwo ?? (100 - pct1);
+    if (sideOne) sideOne.style.width = pct1 + "%";
+    if (sideTwo) sideTwo.style.width = pct2 + "%";
+
+    // Winner highlighting — applied to label containers (always full-width)
+    const labelOne = document.getElementById("predLabelOne");
+    const labelTwo = document.getElementById("predLabelTwo");
+    if (labelOne) labelOne.classList.remove("side-winner", "side-loser");
+    if (labelTwo) labelTwo.classList.remove("side-winner", "side-loser");
+
+    if (isResolved && winner) {
+        if (winner === "ONE") {
+            if (labelOne) labelOne.classList.add("side-winner");
+            if (labelTwo) labelTwo.classList.add("side-loser");
+        } else if (winner === "TWO") {
+            if (labelTwo) labelTwo.classList.add("side-winner");
+            if (labelOne) labelOne.classList.add("side-loser");
+        }
+
+        // 2-minute auto-dismiss (guard so timer only starts once)
+        if (!predContainer.dataset.dismissTimer) {
+            predContainer.dataset.dismissTimer = "1";
+            setTimeout(() => {
+                predContainer.classList.add("hidden");
+                delete predContainer.dataset.dismissTimer;
+            }, 120_000);
+        }
+    }
+}
+
+connection.on("ReceivePredictionUpdate", (pred) => {
+    if (pred) applyPredictionUpdate(pred);
 });
 
 // Once the first update cycle is complete, set isFirstLoad to false
