@@ -85,6 +85,8 @@
                 <select name="upcomingCharacterOne" id="upcomingCharacterOne" class="flex-1">
                     <option value="Unknown_Alt">Character</option>
                     <option value="Alisa">Alisa</option>
+                    <option value="Anna">Anna</option>
+                    <option value="Armor King">Armor King</option>
                     <option value="Asuka">Asuka</option>
                     <option value="Azucena">Azucena</option>
                     <option value="Bryan">Bryan</option>
@@ -93,6 +95,7 @@
                     <option value="DevilJin">DevilJin</option>
                     <option value="Dragunov">Dragunov</option>
                     <option value="Eddy">Eddy</option>
+                    <option value="Fahkumram">Fahkumram</option>
                     <option value="Feng">Feng</option>
                     <option value="Heihachi">Heihachi</option>
                     <option value="Hwoarang">Hwoarang</option>
@@ -102,6 +105,7 @@
                     <option value="Kazuya">Kazuya</option>
                     <option value="King">King</option>
                     <option value="Kuma">Kuma</option>
+                    <option value="Kunimitsu">Kunimitsu</option>
                     <option value="Lars">Lars</option>
                     <option value="Law">Law</option>
                     <option value="Lee">Lee</option>
@@ -109,6 +113,7 @@
                     <option value="Leroy">Leroy</option>
                     <option value="Lidia">Lidia</option>
                     <option value="Lili">Lili</option>
+                    <option value="Miary Zo">Miary Zo</option>
                     <option value="Nina">Nina</option>
                     <option value="Panda">Panda</option>
                     <option value="Paul">Paul</option>
@@ -137,6 +142,8 @@
                 <select name="upcomingCharacterTwo" id="upcomingCharacterTwo" class="flex-1">
                     <option value="Unknown">Character</option>
                     <option value="Alisa">Alisa</option>
+                    <option value="Anna">Anna</option>
+                    <option value="Armor King">Armor King</option>
                     <option value="Asuka">Asuka</option>
                     <option value="Azucena">Azucena</option>
                     <option value="Bryan">Bryan</option>
@@ -145,6 +152,7 @@
                     <option value="DevilJin">DevilJin</option>
                     <option value="Dragunov">Dragunov</option>
                     <option value="Eddy">Eddy</option>
+                    <option value="Fahkumram">Fahkumram</option>
                     <option value="Feng">Feng</option>
                     <option value="Heihachi">Heihachi</option>
                     <option value="Hwoarang">Hwoarang</option>
@@ -154,6 +162,7 @@
                     <option value="Kazuya">Kazuya</option>
                     <option value="King">King</option>
                     <option value="Kuma">Kuma</option>
+                    <option value="Kunimitsu">Kunimitsu</option>
                     <option value="Lars">Lars</option>
                     <option value="Law">Law</option>
                     <option value="Lee">Lee</option>
@@ -161,6 +170,7 @@
                     <option value="Leroy">Leroy</option>
                     <option value="Lidia">Lidia</option>
                     <option value="Lili">Lili</option>
+                    <option value="Miary Zo">Miary Zo</option>
                     <option value="Nina">Nina</option>
                     <option value="Panda">Panda</option>
                     <option value="Paul">Paul</option>
@@ -173,6 +183,33 @@
                     <option value="Yoshimitsu">Yoshimitsu</option>
                     <option value="Zafina">Zafina</option>
                 </select>
+            </div>
+        </div>
+
+        <!-- Twitch Predictions -->
+        <div class="card" style="border-left: 3px solid #9146FF;">
+            <div class="row" style="justify-content: space-between; align-items: center;">
+                <h4 class="card-title" style="color: #a970ff;">🔮 Twitch Predictions</h4>
+                <label
+                    style="color: #fff; font-size: 12px; cursor: pointer; display: flex; align-items: center; gap: 4px;">
+                    <input type="checkbox" id="predictionActive"> Show Prediction Overlay
+                </label>
+            </div>
+            <div class="row" style="margin-top: 4px;">
+                <input type="text" id="twitchChannelName" placeholder="Channel name (e.g. yourname)" class="flex-1">
+                <input type="text" id="twitchClientId" placeholder="Client ID" class="flex-1">
+                <input type="password" id="twitchAccessToken" placeholder="OAuth Token" class="flex-1">
+            </div>
+            <div class="row">
+                <button id="twitchSaveCredentials" class="btn flex-1" style="background: #9146FF;">💾 Save &amp; Start
+                    Auto-Sync</button>
+                <span id="twitchPollStatus" style="color: #aaa; font-size: 11px; padding-left: 8px; flex-shrink: 0;">Not
+                    syncing</span>
+            </div>
+            <div id="predictionInfoRow"
+                style="display:none; margin-top:4px; font-size:11px; color:#aaa; background:rgba(145,70,255,0.08); border-radius:4px; padding:6px 10px; line-height:1.6;">
+                Last sync: <span id="predLastSync">—</span><br>
+                Status: <span id="predStatusInfo">—</span> · Title: <span id="predTitleInfo">—</span>
             </div>
         </div>
 

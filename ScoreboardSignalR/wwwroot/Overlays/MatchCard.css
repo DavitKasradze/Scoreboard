@@ -1,0 +1,399 @@
+@import url('https://fonts.googleapis.com/css2?family=Barlow+Condensed:ital,wght@0,400;0,600;0,700;0,800;0,900;1,700&family=Barlow:wght@400;500;600;700&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html,
+body {
+    width: 2560px;
+    height: 1440px;
+    background: transparent;
+    font-family: 'Barlow Condensed', sans-serif;
+    overflow: hidden;
+}
+
+/* ═══════════════════════════════════════
+   FULL-SCREEN CARD — fills 2560×1440
+═══════════════════════════════════════ */
+.fight-card {
+    position: fixed;
+    inset: 0;
+    width: 2560px;
+    height: 1440px;
+    display: flex;
+    flex-direction: column;
+
+    background:
+        linear-gradient(180deg,
+            #08080e 0%,
+            #0d0d16 40%,
+            #0a0a12 100%);
+
+    opacity: 0;
+    animation: cardFadeIn 1s 0.2s ease forwards;
+}
+
+@keyframes cardFadeIn {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+/* ═══════════════════════════════════════
+   SECTION GROUP — each takes equal space
+═══════════════════════════════════════ */
+.section-group {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    min-height: 0;
+    opacity: 0;
+    animation: sectionIn 0.6s ease forwards;
+}
+
+.section-group:nth-child(1) {
+    animation-delay: 0.3s;
+}
+
+.section-group:nth-child(2) {
+    animation-delay: 0.55s;
+}
+
+.section-group:nth-child(3) {
+    animation-delay: 0.8s;
+}
+
+@keyframes sectionIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* ═══════════════════════════════════════
+   SECTION HEADER BANNERS
+═══════════════════════════════════════ */
+.section-header {
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 28px;
+    padding: 0 80px;
+    height: 90px;
+    letter-spacing: 8px;
+    font-size: 28px;
+    font-weight: 900;
+    text-transform: uppercase;
+    position: relative;
+}
+
+.section-header::before,
+.section-header::after {
+    content: '';
+    flex: 1;
+    height: 2px;
+    background: currentColor;
+    opacity: 0.2;
+}
+
+/* Main Card — bold red */
+.section-main {
+    background: linear-gradient(90deg,
+            #0a0a0e 0%,
+            #7a0018 20%,
+            #c8102e 50%,
+            #7a0018 80%,
+            #0a0a0e 100%);
+    color: #fff;
+    text-shadow: 0 0 40px rgba(255, 80, 80, 0.5);
+    box-shadow: 0 4px 60px rgba(200, 16, 46, 0.25);
+}
+
+/* Prelims — deep blue */
+.section-prelims {
+    background: linear-gradient(90deg,
+            #08080e 0%,
+            #0e1530 20%,
+            #1a2448 50%,
+            #0e1530 80%,
+            #08080e 100%);
+    color: #8ba0d4;
+    border-top: 2px solid rgba(100, 130, 200, 0.15);
+    text-shadow: 0 0 30px rgba(100, 140, 220, 0.4);
+}
+
+/* Early Prelims — dark grey */
+.section-early {
+    background: linear-gradient(90deg,
+            #080808 0%,
+            #111111 20%,
+            #1c1c1c 50%,
+            #111111 80%,
+            #080808 100%);
+    color: #555;
+    border-top: 2px solid rgba(255, 255, 255, 0.05);
+}
+
+/* ═══════════════════════════════════════
+   FIGHT ROWS — fill remaining section space
+═══════════════════════════════════════ */
+.section-fights {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    min-height: 0;
+}
+
+.fight-row {
+    flex: 1;
+    display: flex;
+    align-items: stretch;
+    padding: 0 80px;
+    position: relative;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+    min-height: 0;
+    container-type: size;
+}
+
+.fight-row:last-child {
+    border-bottom: none;
+}
+
+/* Subtle alternating depth */
+.fight-row:nth-child(even) {
+    background: rgba(255, 255, 255, 0.015);
+}
+
+/* Vertical center alignment inside row */
+.fight-row-inner {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    gap: 0;
+    position: relative;
+    z-index: 2;
+}
+
+/* ═══════════════════════════════════════
+   BIG CHARACTER RENDERS (atmospheric bg)
+═══════════════════════════════════════ */
+.char-big {
+    position: absolute;
+    top: 0;
+    height: 100%;
+    width: auto;
+    object-fit: contain;
+    object-position: bottom;
+    opacity: 0.95;
+    pointer-events: none;
+    z-index: 1;
+    transition: filter 0.5s ease, opacity 0.5s ease;
+}
+
+/* Left fighter — natural orientation */
+.char-big-left {
+    left: 0;
+    mask-image: linear-gradient(to right, rgba(0, 0, 0, 0.9) 50%, transparent 100%);
+    -webkit-mask-image: linear-gradient(to right, rgba(0, 0, 0, 0.9) 50%, transparent 100%);
+}
+
+/* Right fighter — faces inward naturally */
+.char-big-right {
+    right: 0;
+    mask-image: linear-gradient(to left, rgba(0, 0, 0, 0.9) 50%, transparent 100%);
+    -webkit-mask-image: linear-gradient(to left, rgba(0, 0, 0, 0.9) 50%, transparent 100%);
+}
+
+/* Main card rows — full visibility */
+.main-fight .char-big {
+    opacity: 1;
+}
+
+/* LOSER big render — greyscale + dimmer */
+.fight-row.p1-lost .char-big-left {
+    filter: grayscale(1) brightness(0.4);
+    opacity: 0.4;
+}
+
+.fight-row.p2-lost .char-big-right {
+    filter: grayscale(1) brightness(0.4);
+    opacity: 0.4;
+}
+
+/* WINNER big render — full brightness */
+.fight-row.p1-won .char-big-left {
+    opacity: 1;
+    filter: brightness(1.1);
+}
+
+.fight-row.p2-won .char-big-right {
+    opacity: 1;
+    filter: brightness(1.1);
+}
+
+/* ═══════════════════════════════════════
+   FIGHTER SIDES
+═══════════════════════════════════════ */
+.fighter {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    min-width: 0;
+}
+
+.fighter.left {
+    padding-left: 260px; /* Push text inwards to clear the big character */
+}
+
+.fighter.right {
+    flex-direction: row-reverse;
+    text-align: right;
+    padding-right: 260px; /* Push text inwards to clear the big character */
+}
+
+/* ── LOSER — text dimmed ── */
+.fighter.loser .fighter-name {
+    color: #2a2a2a !important;
+}
+
+.fighter.loser .fighter-score {
+    color: #222 !important;
+}
+
+/* ── WINNER — text highlight ── */
+.fighter.winner .fighter-name {
+    color: #ff3355 !important;
+    text-shadow: 0 0 30px rgba(255, 50, 80, 0.4);
+}
+
+/* ── Fighter text info ── */
+.fighter-info {
+    min-width: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 4cqh;
+}
+
+.fighter-name {
+    font-size: 36cqh;
+    font-weight: 900;
+    color: #ffffff;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    line-height: 0.9;
+    transition: color 0.5s, text-shadow 0.5s;
+}
+
+/* Prelims / Early rows — slightly smaller name */
+.section-prelims .fighter-name,
+.section-early .fighter-name {
+    font-size: 30cqh;
+}
+
+.fighter-score {
+    font-size: 40cqh;
+    font-weight: 900;
+    color: rgba(255, 255, 255, 0.75);
+    line-height: 1;
+    letter-spacing: -2px;
+    transition: color 0.5s;
+}
+
+.section-prelims .fighter-score,
+.section-early .fighter-score {
+    font-size: 33cqh;
+}
+
+/* ═══════════════════════════════════════
+   VS DIVIDER (centre column)
+═══════════════════════════════════════ */
+.vs-divider {
+    flex-shrink: 0;
+    width: 200px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 6cqh;
+    position: relative;
+}
+
+/* Vertical hairline either side of VS */
+.vs-divider::before,
+.vs-divider::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    width: 1px;
+    background: linear-gradient(180deg,
+            transparent 0%,
+            rgba(255, 255, 255, 0.08) 30%,
+            rgba(255, 255, 255, 0.08) 70%,
+            transparent 100%);
+}
+
+.vs-divider::before {
+    left: 0;
+}
+
+.vs-divider::after {
+    right: 0;
+}
+
+.vs-text {
+    font-size: 14cqh;
+    font-weight: 900;
+    color: rgba(255, 255, 255, 0.18);
+    letter-spacing: 6px;
+}
+
+.score-separator {
+    font-size: 40cqh;
+    font-weight: 900;
+    color: rgba(255, 255, 255, 0.10);
+    line-height: 1;
+    letter-spacing: -4px;
+}
+
+.section-prelims .score-separator,
+.section-early .score-separator {
+    font-size: 33cqh;
+}
+
+/* Hide scores when 0-0 */
+.score-hidden .fighter-score,
+.score-hidden .score-separator {
+    display: none !important;
+}
+
+/* ═══════════════════════════════════════
+   BOTTOM DECORATIVE LINE
+═══════════════════════════════════════ */
+.fight-card::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: linear-gradient(90deg,
+            transparent, #c8102e 30%, #c8102e 70%, transparent);
+    opacity: 0.6;
+}

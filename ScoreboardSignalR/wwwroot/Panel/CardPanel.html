@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Card Panel</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="./CardPanel.css">
+</head>
+<body>
+
+    <h1 class="panel-title">Fight Card Editor</h1>
+
+    <!-- ── MATCH SELECTOR TABS ── -->
+    <div class="match-tabs" id="matchTabs">
+        <!-- tabs injected by JS -->
+    </div>
+
+    <!-- ── SELECTED MATCH EDITOR ── -->
+    <div class="editor-card">
+        <div class="editor-card-title" id="editorTitle">Select a match above</div>
+
+        <!-- Fighter 1 -->
+        <div class="fighter-editor-row">
+            <span class="side-label" style="color:#e8eaf0;">P1</span>
+            <input type="text" id="editNameP1" placeholder="Player 1 name">
+            <div class="char-select-wrap">
+                <img class="char-preview" id="previewP1" src="../Images/CharactersSmall/Unknown_Alt.png" alt="">
+                <select id="editCharP1">
+                    <!-- options injected by JS -->
+                </select>
+            </div>
+            <input type="number" id="editScoreP1" class="score-input" value="0" min="0">
+        </div>
+
+        <!-- Fighter 2 -->
+        <div class="fighter-editor-row">
+            <span class="side-label" style="color:#e8eaf0;">P2</span>
+            <input type="text" id="editNameP2" placeholder="Player 2 name">
+            <div class="char-select-wrap">
+                <img class="char-preview" id="previewP2" src="../Images/CharactersSmall/Unknown.png" alt="">
+                <select id="editCharP2">
+                    <!-- options injected by JS -->
+                </select>
+            </div>
+            <input type="number" id="editScoreP2" class="score-input" value="0" min="0">
+        </div>
+
+        <!-- Winner picker -->
+        <div>
+            <div class="editor-card-title" style="margin-bottom:8px;">Winner</div>
+            <div class="winner-row">
+                <button class="winner-btn" id="winnerP1Btn">— P1 WINS —</button>
+                <button class="winner-btn no-winner" id="winnerNoneBtn">None</button>
+                <button class="winner-btn" id="winnerP2Btn">— P2 WINS —</button>
+            </div>
+        </div>
+
+        <!-- Actions -->
+        <div class="actions-row">
+            <button class="btn btn-ghost flex-1" id="resetMatchBtn">Reset Match</button>
+            <button class="btn btn-block flex-1" id="applyMatchBtn">Apply to Card</button>
+        </div>
+    </div>
+
+    <!-- ── GLOBAL ACTIONS ── -->
+    <button class="btn btn-block" id="broadcastCardBtn" style="background:#1a472a; margin-bottom:8px;">📡 Broadcast Card Update</button>
+    <button class="btn btn-block btn-ghost" id="resetAllBtn">Reset All Matches</button>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/microsoft-signalr/7.0.5/signalr.min.js"></script>
+    <script src="./CardPanel.js"></script>
+</body>
+</html>

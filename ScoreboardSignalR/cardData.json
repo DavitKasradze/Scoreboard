@@ -1,0 +1,125 @@
+{
+  "Matches": [
+    {
+      "Id": 1,
+      "Section": "main",
+      "P1": "UIPotato",
+      "P2": "Happy Buddha",
+      "ScoreP1": 0,
+      "ScoreP2": 0,
+      "Winner": null,
+      "CharP1": "Azucena",
+      "CharP2": "Kazuya"
+    },
+    {
+      "Id": 2,
+      "Section": "main",
+      "P1": "Frying berries",
+      "P2": "Monad",
+      "ScoreP1": 0,
+      "ScoreP2": 0,
+      "Winner": null,
+      "CharP1": "Armor King",
+      "CharP2": "Lee"
+    },
+    {
+      "Id": 3,
+      "Section": "main",
+      "P1": "Xomasa",
+      "P2": "Worgeni",
+      "ScoreP1": 0,
+      "ScoreP2": 0,
+      "Winner": null,
+      "CharP1": "Victor",
+      "CharP2": "Asuka"
+    },
+    {
+      "Id": 4,
+      "Section": "main",
+      "P1": "Violet",
+      "P2": "Ms. Taqe",
+      "ScoreP1": 0,
+      "ScoreP2": 0,
+      "Winner": null,
+      "CharP1": "Fahkumram",
+      "CharP2": "Miary Zo"
+    },
+    {
+      "Id": 5,
+      "Section": "prelims",
+      "P1": "Abela",
+      "P2": "Koka",
+      "ScoreP1": 0,
+      "ScoreP2": 0,
+      "Winner": null,
+      "CharP1": "Hwoarang",
+      "CharP2": "Yoshimitsu"
+    },
+    {
+      "Id": 6,
+      "Section": "prelims",
+      "P1": "Giliga",
+      "P2": "Tato",
+      "ScoreP1": 0,
+      "ScoreP2": 0,
+      "Winner": null,
+      "CharP1": "Yoshimitsu",
+      "CharP2": "King"
+    },
+    {
+      "Id": 7,
+      "Section": "prelims",
+      "P1": "Dirextori",
+      "P2": "Blake",
+      "ScoreP1": 0,
+      "ScoreP2": 0,
+      "Winner": null,
+      "CharP1": "Dragunov",
+      "CharP2": "Lili"
+    },
+    {
+      "Id": 8,
+      "Section": "prelims",
+      "P1": "Hopkick Enjoyer",
+      "P2": "Lukicha",
+      "ScoreP1": 0,
+      "ScoreP2": 0,
+      "Winner": null,
+      "CharP1": "Claudio",
+      "CharP2": "Heihachi"
+    },
+    {
+      "Id": 9,
+      "Section": "early",
+      "P1": "Just Gela",
+      "P2": "Madara",
+      "ScoreP1": 0,
+      "ScoreP2": 0,
+      "Winner": null,
+      "CharP1": "Kazuya",
+      "CharP2": "Lee"
+    },
+    {
+      "Id": 10,
+      "Section": "early",
+      "P1": "Nika",
+      "P2": "Gigi",
+      "ScoreP1": 0,
+      "ScoreP2": 0,
+      "Winner": null,
+      "CharP1": "Steve",
+      "CharP2": "Eddy"
+    },
+    {
+      "Id": 11,
+      "Section": "early",
+      "P1": "Potterhead",
+      "P2": "MINDOZA",
+      "ScoreP1": 0,
+      "ScoreP2": 0,
+      "Winner": null,
+      "CharP1": "Eddy",
+      "CharP2": "Jack8"
+    }
+  ]
+}

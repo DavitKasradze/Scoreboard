@@ -1,0 +1,10 @@
+# .NET build output
+bin/
+obj/
+publish/
+
+# IDE / Editor files
+.vs/
+.vscode/
+*.user
+*.suo

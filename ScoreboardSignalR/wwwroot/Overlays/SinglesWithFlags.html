@@ -1,6 +1,6 @@
 <head>
     <meta charset="UTF-8">
-    <link rel="stylesheet" href="./Scoreboard.css">
+    <link rel="stylesheet" href="./Scoreboard.css?v=2">
     <title>Singles With Flags</title>
 </head>
 <div id="scoreboard" class="scoreboard">
@@ -19,6 +19,31 @@
         </div>
         <img class="flag-img" id="countryTwo" src="../Images/Countries/" alt="">
     </header>
+
+    <!-- Prediction Odds Overlay -->
+    <div id="predictionContainer" class="prediction-container hidden">
+        <div class="prediction-header-bar">
+            <span class="prediction-tag" id="predictionStatus">TWITCH PREDICTION</span>
+            <span class="prediction-title" id="predictionTitle">WHO WILL WIN?</span>
+        </div>
+        <!-- Labels row: always full width, names never clipped -->
+        <div class="prediction-labels-row">
+            <div class="pred-label pred-label-one" id="predLabelOne">
+                <span class="prediction-name" id="predictionNameOne">PLAYER 1</span>
+                <span class="prediction-odds" id="predictionOddsOne">50% (1.00x)</span>
+            </div>
+            <div class="pred-label pred-label-two" id="predLabelTwo">
+                <span class="prediction-odds" id="predictionOddsTwo">50% (1.00x)</span>
+                <span class="prediction-name" id="predictionNameTwo">PLAYER 2</span>
+            </div>
+        </div>
+        <!-- Bar row: purely visual, widths reflect the actual odds -->
+        <div class="prediction-bar-wrapper">
+            <div class="prediction-side side-one" id="predictionSideOne" style="width: 50%;"></div>
+            <div class="prediction-side side-two" id="predictionSideTwo" style="width: 50%;"></div>
+        </div>
+    </div>
+
 </div>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/microsoft-signalr/7.0.5/signalr.min.js"></script>
 <script src="./Scoreboard.js"></script>
