@@ -122,17 +122,17 @@ body {
     box-shadow: 0 4px 60px rgba(200, 16, 46, 0.25);
 }
 
-/* Prelims — deep blue */
+/* Prelims — monochrome white */
 .section-prelims {
     background: linear-gradient(90deg,
-            #08080e 0%,
-            #0e1530 20%,
-            #1a2448 50%,
-            #0e1530 80%,
-            #08080e 100%);
-    color: #8ba0d4;
-    border-top: 2px solid rgba(100, 130, 200, 0.15);
-    text-shadow: 0 0 30px rgba(100, 140, 220, 0.4);
+            #08080a 0%,
+            #181820 20%,
+            #2a2a36 50%,
+            #181820 80%,
+            #08080a 100%);
+    color: #ffffff;
+    border-top: 2px solid rgba(255, 255, 255, 0.2);
+    text-shadow: 0 0 30px rgba(255, 255, 255, 0.5);
 }
 
 /* Early Prelims — dark grey */
