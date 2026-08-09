@@ -16,15 +16,15 @@ public class ScoreboardHub : Hub
 
     private static string GetProjectRootFilePath(string filename)
     {
-        var currentDir = Directory.GetCurrentDirectory();
-        var dir = new DirectoryInfo(currentDir);
+        var baseDir = AppContext.BaseDirectory;
+        var dir = new DirectoryInfo(baseDir);
         // Traverse up to find the project root if we are in bin/Debug etc.
         while (dir != null && !File.Exists(Path.Combine(dir.FullName, "ScoreboardSignalR.csproj")))
         {
             dir = dir.Parent;
         }
         
-        var targetDir = dir?.FullName ?? currentDir;
+        var targetDir = dir?.FullName ?? baseDir;
         return Path.Combine(targetDir, filename);
     }
     

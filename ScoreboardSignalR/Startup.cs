@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Builder;
+using System.IO;
+using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.FileProviders;
@@ -33,9 +34,27 @@ public class Startup
         app.UseRouting();
         
         var embeddedFileProvider = new EmbeddedFileProvider(typeof(Program).Assembly, "ScoreboardSignalR.wwwroot");
+        var wwwrootPath = Path.Combine(System.AppContext.BaseDirectory, "wwwroot");
+        
+        IFileProvider fileProvider;
+        if (Directory.Exists(wwwrootPath))
+        {
+            var physicalProvider = new PhysicalFileProvider(wwwrootPath);
+            fileProvider = new CompositeFileProvider(physicalProvider, embeddedFileProvider);
+        }
+        else
+        {
+            fileProvider = embeddedFileProvider;
+        }
+
+        app.UseDefaultFiles(new DefaultFilesOptions
+        {
+            FileProvider = fileProvider
+        });
+
         app.UseStaticFiles(new StaticFileOptions
         {
-            FileProvider = embeddedFileProvider,
+            FileProvider = fileProvider,
             RequestPath = ""
         });
         
