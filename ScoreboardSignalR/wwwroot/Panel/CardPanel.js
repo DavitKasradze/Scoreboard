@@ -124,17 +124,15 @@ document.getElementById("resetMatchBtn").addEventListener("click", () => {
     m.scoreP1 = 0;
     m.scoreP2 = 0;
     m.winner = null;
-    m.charP1 = CHARACTERS[0];
-    m.charP2 = CHARACTERS[0];
     selectMatch(selectedMatchId);
 });
 
 // ─── RESET ALL ────────────────────────────────────────────────────────────────
 document.getElementById("resetAllBtn").addEventListener("click", () => {
     cardState.forEach(m => {
-        m.scoreP1 = 0; m.scoreP2 = 0;
+        m.scoreP1 = 0;
+        m.scoreP2 = 0;
         m.winner = null;
-        m.charP1 = CHARACTERS[0]; m.charP2 = CHARACTERS[0];
     });
     buildTabs();
     selectMatch(selectedMatchId);
